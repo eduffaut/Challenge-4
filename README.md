@@ -31,6 +31,7 @@ git clone https://github.com/whitestack/ws-challenge-4.git
 
 **Agregar contador en app.py** 
 
+```bash
 from bottle import Bottle, request, response
 import time
 from flask import Flask, jsonify, request
@@ -56,3 +57,14 @@ def lightwork():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
+
+```
+
+
+
+
+
+
+
+
+
