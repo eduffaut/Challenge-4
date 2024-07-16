@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-app-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: edu.whitestack.com
+    http:
+      paths:
+      - path: /heavywork
+        pathType: Prefix
+        backend:
+          service:
+            name: web-app-svc
+            port:
+              number: 8080
+      paths:
+      - path: /lightwork
+        pathType: Prefix
+        backend:
+          service:
+            name: web-app-svc
+            port:
+              number: 8080

@@ -13,5 +13,8 @@ COPY . .
 # Install production dependencies.
 RUN pip install --no-cache-dir -r requirements.txt
 
+#Expose 8080
+EXPOSE 8080
+
 # Run the web service on container startup.
 CMD ["python", "app.py"]

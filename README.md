@@ -62,8 +62,15 @@ if __name__ == "__main__":
 **Crear la imagen docker** 
 
 ```bash
-docker build -t web-app:latest .
+docker build -t eduffaut/web-app:latest .
 ```
+
+**Subo imagen a Docker Hub** 
+
+```bash
+docker push eduffaut/web-app:latest
+```
+
 
 
 
