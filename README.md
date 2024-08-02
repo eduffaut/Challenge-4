@@ -54,6 +54,8 @@ def heavywork():
 def lightwork():
     return {"message": "Light work done"}
 
+# Ruta para las métricas de Prometheus
+app.mount('/metrics', make_wsgi_app())
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
@@ -71,9 +73,31 @@ docker build -t eduffaut/web-app:latest .
 docker push eduffaut/web-app:latest
 ```
 
+** Cluster utilizado para el despliegue - MINIKUBE**
 
+```bash
+minikube start
+```
 
+** Instalación de Prometheus con Helm en namespace monitoring**
 
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo add kube-prometheus-stack https://prometheus-community.github.io/helm-charts
+helm repo update
+```
+
+** Instalación de Prometheus-Adapter con Helm y ConfigMap personalizado en namespace apps para leer métric requests_total**
+
+```bash
+helm install -f prometheus/values.yaml prometheus-adapter prometheus-community/prometheus-adapter
+```
+
+** Aplico todos los manifest necesarios para el despliegue de la solución **
+
+```bash
+kubectl apply -f ./manifests
+```
 
 
 
