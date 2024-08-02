@@ -20,6 +20,8 @@ def heavywork():
 def lightwork():
     return {"message": "Light work done"}
 
+# Ruta para las métricas de Prometheus
+app.mount('/metrics', make_wsgi_app())
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)

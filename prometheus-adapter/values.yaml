@@ -1,0 +1,16 @@
+prometheus:
+  url: http://prometheus-k8s.monitoring.svc
+  port: 9090
+
+rules:
+   default: false
+   custom:
+   - seriesQuery: 'requests_total'
+     resources:
+       template: <<.Resource>>
+     name:
+       matches: "requests_total"
+       as: "requests_total"
+     metricsQuery: sum(rate(<<.Series>>{<<.LabelMatchers>>}[1m])) by (<<.GroupBy>>)
+
+

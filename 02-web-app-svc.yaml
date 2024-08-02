@@ -2,11 +2,14 @@ kind: Service
 apiVersion: v1
 metadata:
   name: web-app-svc
+  labels:
+    svc: web-app-svc
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: web-app
   ports:
-  - protocol: TCP
+  - name: http-8080
+    protocol: TCP
     port: 8080
     targetPort: 8080

@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: edu.whitestack.com
+  - host: app.minikube.local
     http:
       paths:
       - path: /heavywork
@@ -15,7 +15,6 @@ spec:
             name: web-app-svc
             port:
               number: 8080
-      paths:
       - path: /lightwork
         pathType: Prefix
         backend:

@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+   name: sm-prueba
+   # namespace: monitoring
+   labels:
+     sm: web-app-sm
+spec:
+   selector:
+      matchLabels:
+         svc: web-app-svc
+   endpoints:
+   - interval: 30s
+     path: /metrics
+     port: http-8080
+   # namespaceSelector:
+   #   matchNames:
+   #   - apps2

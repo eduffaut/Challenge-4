@@ -1,0 +1,24 @@
+# apiVersion: autoscaling/v2beta1
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: web-app-hpa-object
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: web-app
+  minReplicas: 1
+  maxReplicas: 5
+  metrics:
+  - type: Object
+    object:
+      describedObject:
+        apiVersion: v1
+        kind: Service
+        name: web-app-svc
+      metric:
+        name: requests_total
+      target:
+        type: Value
+        value: "10"
