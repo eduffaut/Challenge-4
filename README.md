@@ -6,18 +6,6 @@
 
 ## Comandos utilizados.
 
-Guardo configuración del cluster para poder conectarme
-
-```bash
-cat whitestackchallenge.yaml >> .kube/config
-```
-
-Me conecto al cluster.
-
-```bash
-kubectx whitestackchallenge
-```
-
 Listar servicios
 
 ```bash
