@@ -1,3 +1,7 @@
+<h3 align="left">Languages and Tools:</h3>
+<p align="left"> <a href="https://kubernetes.io" target="_blank" rel="noreferrer"> <img src="https://www.vectorlogo.zone/logos/kubernetes/kubernetes-icon.svg" alt="kubernetes" width="40" height="40"/> </a> <a href="https://www.python.org" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> </a> </p>
+
+
 # Challenge-4
 
 ## Comandos utilizados.
@@ -185,7 +189,7 @@ NAME                 REFERENCE            TARGETS   MINPODS   MAXPODS   REPLICAS
 web-app-hpa-object   Deployment/web-app   0/10      1         5         1          5h28m
 ```
 
-# Demo prueba de carga, escalado y desescalado.
+# Demo.
 
 [![asciicast](https://asciinema.org/a/1kq3eMb3r9UDNNwtcCojCFeTk.svg)](https://asciinema.org/a/1kq3eMb3r9UDNNwtcCojCFeTk)
 
