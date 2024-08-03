@@ -1,6 +1,6 @@
 # Challenge-4
 
-## Comandos utilizados
+## Comandos utilizados.
 
 Guardo configuración del cluster para poder conectarme
 
@@ -23,13 +23,13 @@ kubectl get svc
 
 ## Despliegue
 
-**Clonar el repo del challenge**
+**Clonar el repo del challenge.**
 
 ```bash
 git clone https://github.com/whitestack/ws-challenge-4.git
 ```
 
-**Agregar contador en app.py** 
+**Agregar contador en app.py.** 
 
 ```bash
 from bottle import Bottle, request, response
@@ -61,25 +61,25 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
 ```
 
-**Crear la imágen docker** 
+**Crear la imágen docker.** 
 
 ```bash
 docker build -t eduffaut/web-app:latest .
 ```
 
-**Subo imágen a Docker Hub** 
+**Subo imágen a Docker Hub.** 
 
 ```bash
 docker push eduffaut/web-app:latest
 ```
 
-**Cluster utilizado para el despliegue - MINIKUBE**
+**Cluster utilizado para el despliegue - MINIKUBE.**
 
 ```bash
 minikube start
 ```
 
-**Instalación de Prometheus con Helm en namespace monitoring**
+**Instalación de Prometheus con Helm en namespace monitoring.**
 
 ```bash
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -87,7 +87,7 @@ helm repo add kube-prometheus-stack https://prometheus-community.github.io/helm-
 helm repo update
 ```
 
-**Chequeo que los deployments se crearon correctamente**
+**Chequeo que los deployments se crearon correctamente.**
 
 ```bash
 kubectl get all -n monitoring
@@ -141,13 +141,13 @@ statefulset.apps/alertmanager-main   3/3     4d
 statefulset.apps/prometheus-k8s      2/2     4d
 ```
 
-**Instalación de Prometheus-Adapter con Helm y ConfigMap personalizado en namespace apps para leer métric requests_total**
+**Instalación de Prometheus-Adapter con Helm y ConfigMap personalizado en namespace apps para leer métrica requests_total.**
 
 ```bash
 helm install -f prometheus-adapter/values.yaml prometheus-adapter prometheus-community/prometheus-adapter
 ```
 
-**Chequeo que los deployments se crearon correctamente**
+**Chequeo que los deployments se crearon correctamente.**
 
 ```bash
 kubectl get all
@@ -171,19 +171,23 @@ NAME                                                     REFERENCE            TA
 horizontalpodautoscaler.autoscaling/web-app-hpa-object   Deployment/web-app   0/10      1         5         1          5h27m
 ```
 
-**Aplico todos los manifest necesarios para el despliegue de la solución**
+**Aplico todos los manifest necesarios para el despliegue de la solución.**
 
 ```bash
 kubectl apply -f ./manifests
 ```
 
-**Estado del HPA**
+**Estado del HPA sin carga.**
 
 ```bash
 kubectl get hpa
 NAME                 REFERENCE            TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
 web-app-hpa-object   Deployment/web-app   0/10      1         5         1          5h28m
 ```
+
+# Demo prueba de carga, escalado y desescalado.
+
+[![asciicast](https://asciinema.org/a/1kq3eMb3r9UDNNwtcCojCFeTk.svg)](https://asciinema.org/a/1kq3eMb3r9UDNNwtcCojCFeTk)
 
 
 
